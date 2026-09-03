@@ -1,235 +1,266 @@
-<!-- ─────────────────────────────────────────────────────────────────
-     invisible ink · entry no. 1
-     you view-source before you trust a page.
-     the zookeeper does the same with software.
-     you will get along.
-     ───────────────────────────────────────────────────────────────── -->
+<!-- you read the source before running the binary. the skeptic notes this.
+     unlisted commands exist. they are not impossible to find. -->
 
 <p align="center">
-  <strong>THE FAILURE ZOO</strong><br>
-  <sub>an institute for the study of confident, wrong software</sub>
-  <br><br>
-  <code>est. 2025 · kept by <a href="https://github.com/anujsingh-cse">Anuj Singh</a> · B.E. CSE, class of 2026 · India</code><br>
-  <code>admission: free · budget: ₹0 · power source: one 4 GB GPU and several free tiers</code>
+  <img src="assets/boot.svg" alt="skeptic-os booting: processes mounted, free-tier uplink established, one enchanted object secured" width="700">
 </p>
 
----
+<p align="center">
+  <sub>you are <b>guest</b> on a machine that verifies before it answers.<br>
+  nothing below is asserted. everything is proven, disproven, or marked <code>[unverified]</code>.</sub>
+</p>
 
-You are visiting a collection of instruments built to catch software — mostly AI —
-in the act of being confidently wrong. Every enclosure here exists because a system
-answered with certainty and nobody could say *why*.
+```text
+guest@skeptic-os:~$ whoami
 
-| Gate | Destination | You will find |
-|---|---|---|
-| § I | The Grounds | the instruments themselves |
-| § II | The Specimen Collection | what the instruments have caught |
-| § III | Public Services | useful software, few monsters |
-| § IV | The Fossil Record | strata, 2025 → now |
-| § ∞ | Exhibit ∞ | do not feed |
+anuj singh — b.e. cse, class of 2026, india.
+i build instruments that interrogate other software:
+rag pipelines, coding assistants, charts, agents — nothing gets believed for free.
+```
 
----
+```text
+guest@skeptic-os:~$ history | tail -n 5
 
-## § I — The Grounds
-
-### EXHIBIT 01 — Hall of Attributed Blame · [`raglens`](https://github.com/anujsingh-cse/raglens)
-
-`Python · MIT · pip install raglens`
-
-RAGAS tells you an answer is *"82% faithful."*
-This enclosure tells you **chunk `r2_c0` did it** — removing it moved faithfulness
-0.42 → 0.89 — then classifies the failure so you know whether to fix the retriever
-or the generator.
-
-Mechanism: leave-one-chunk-out **counterfactual attribution**, pairwise
-conflict detection between chunks, four-way failure-mode classification.
-Judge: a real LLM on NVIDIA NIM — no mocks, no scripted fixtures. Output: HTML report.
-
-<sub>responsible for the capture of specimens S-001 through S-004.</sub>
-
----
-
-### EXHIBIT 02 — The Debate Pit · [`orchestrator-of-three-cycles`](https://github.com/anujsingh-cse/orchestrator-of-three-cycles)
-
-`Python · MIT · 124 tests · the zoo's original collection site`
-
-Does an agent that argues with itself patch better than one that doesn't?
-This harness answers with data, not vibes: **Coder proposes → Adversary attacks →
-Critic rules → a human signs off.** Control group: one AI, no debate.
-
-Every broken patch is preserved with full provenance — the *failure zoo* this
-entire establishment is named after. Everything runs on NVIDIA's free NIM tier
-(Ollama as drop-in), because a research question shouldn't require a budget.
-
-<sub>run cost per experiment: ₹0. evidence collected: pricele— no. quantified. that is the point.</sub>
-
----
-
-### EXHIBIT 03 — The Assistant That Frisks Itself · [`GhostCoder`](https://github.com/anujsingh-cse/GhostCoder)
-
-`Python · MIT · pip install ghostcoder · local-first`
-
-A coding assistant with **no sidebar and no chat window** — specialist agents leave
-inline hints. Before any suggestion reaches you, an adversarial **Skeptic** re-reads
-it for logic flaws and security problems; guardrails reject the `rm -rf`-class of help.
-Every decision is recorded and replayable: `ghostcoder replay --session <id>`.
-
-Model-agnostic over Ollama; auto-tunes itself to your VRAM, down to a GTX 1650 4 GB.
-An assistant that does not trust itself is the only kind worth installing.
-
-<sub>captured specimen S-007, which is common in the wild and declining here.</sub>
-
----
-
-### EXHIBIT 04 — The Refutation Laboratory · [`causal-inference-toolkit`](https://github.com/anujsingh-cse/causal-inference-toolkit)
-
-`Python · MIT · pip install causal-toolkit · [docs](https://anujsingh-cse.github.io/causal-inference-toolkit/)`
-
-Correlation walks in. It is asked for papers.
-
-DoWhy/EconML wrapped into YAML-configured pipelines: **identify → estimate →
-refute → sensitivity.** Rosenbaum bounds, E-values, Cinelli-Hazlett robustness values,
-synthetic control, difference-in-differences, A/B testing, uplift modeling.
-Ships with a Streamlit console and one-command executive HTML reports.
-
-<sub>permanent home of specimen S-006, the most abundant species on Earth.</sub>
-
----
-
-### EXHIBIT 05 — The Unmanned Front Desk · [`devrel-agent`](https://github.com/anujsingh-cse/devrel-agent)
-
-`TypeScript · GitHub App · live at https://devrel-agent-two.vercel.app`
-
-Reads an issue, writes a multi-file fix, authors matching tests, **audits its own diff**,
-opens the PR, then watches CI and pushes remediation commits when the build fails.
-Eight phases; a multi-provider cascade (Gemini → NVIDIA NIM → GitHub Models) so a dead
-API never leaves the desk unmanned.
-
-<sub>visitors are reminded that the desk's output, like everything here, is reviewed before it ships. institutional habit.</sub>
-
----
-
-## § II — The Specimen Collection
-
-*What follows is every species of machine dishonesty currently in custody. Failures are catalogued by what they actually are, not by what they report themselves to be.*
-
-| № | Reports itself as | Is actually | Captured by |
-|---|---|---|---|
-| S-001 | "the model hallucinated" | one chunk hijacked the answer (`chunk_dominance`) | Exhibit 01, counterfactual sweep |
-| S-002 | "the RAG ignored the docs" | context retrieved, never used (`generation_ignore`) | Exhibit 01 |
-| S-003 | "the model didn't know" | retriever never found the answer (`retrieval_miss`) | Exhibit 01 |
-| S-004 | "two sources, one answer" | the chunks contradict; nobody noticed | Exhibit 01, conflict probe |
-| S-005 | "LGTM, first patch" | the patch fails the edge case it was never shown | Exhibit 02, the Adversary |
-| S-006 | "the chart proves it" | correlation in a lab coat | Exhibit 04 |
-| S-007 | "a helpful suggestion" | `rm -rf`, offered cheerfully | Exhibit 03, guardrail |
-
-<sub>The taxonomy is maintained in the repositories themselves — Exhibit 01 ships the classifier.</sub>
-
----
-
-## § III — Public Services
-
-*The zoo is not entirely preoccupied with misconduct. These counters serve the public directly.*
-
-- **The Translation Window — [`YojanaSetu`](https://github.com/anujsingh-cse/YojanaSetu).**
-  1,000+ Indian government welfare schemes matched to citizens by profile, explained
-  by a vernacular AI (Hindi · Tamil · Marathi · Telugu), with an OCR document vault that
-  fills the forms for you.
-- **The Document Forensics Counter — [`autoinvoice-ocr`](https://github.com/anujsingh-cse/autoinvoice-ocr).**
-  Invoice PDF goes in; structured, Stripe-billable JSON comes out. Tesseract.js plus an
-  LLM for the layouts that refuse to be parsed.
-- **The Telemetry Deck — [`nexus-analytics`](https://github.com/anujsingh-cse/nexus-analytics).**
-  Real-time event analytics, sub-second latency, simulated high-throughput streams.
-- **The Council Room — [`AgentParliament`](https://github.com/anujsingh-cse/AgentParliament).**
-  Technical decisions settled by a vote of simulated developer personas. Minutes included.
-
----
-
-## § IV — The Fossil Record
-
-*Excavated, not curated. Displayed as found; some labels have faded.*
-
-| Stratum | Deposits | Condition |
-|---|---|---|
-| early 2025 | `Ap`, `ap-exp5` | lab notebooks. first tools, made of sticks |
-| mid 2025 | `netflix-clone` | replicated megafauna. a rite of passage |
-| late 2025 | `commitsense`, `qa-portfolio` | instrument-shaped objects |
-| mid 2026 | `ai-progress`, `CyberGuard-AI` | unlabeled jars, pending classification |
-| mid 2026 → | everything above | on display, still warm |
-
-<sub>The register holds 43 repositories. The zoo displays the ones that bite.</sub>
-
----
-
-## § ∞ — Exhibit ∞ · [`Tom-riddle-s-diary`](https://github.com/anujsingh-cse/Tom-riddle-s-diary)
-
-The only specimen the zoo bred itself — and then, against institutional advice, released.
-
-Write in it. It remembers (Postgres + ChromaDB). It writes back
-(`llama-3.3-70b`, NVIDIA NIM). It advertises itself, accurately, as a place to
-*share secrets that disappear*. Full-stack: Next.js front, Python back, Docker-composed,
-Clerk-gated, and yes — [it is alive](https://tom-riddle-s-diary-sage.vercel.app).
-
-<!-- invisible ink · entry no. 2
-     the diary reads you back.
-     entry no. 3 is somewhere below. -->
-
-The zookeeper notes the irony of an institution for verification keeping one enchanted
-liar as a pet, and declines to comment further.
-
-<sub>DO NOT FEED AFTER MIDNIGHT.</sub>
-
----
-
-## Visitor Information
-
-- **The keeper** is a final-year engineering student in India. Everything on these grounds
-  was built on free tiers and a 4 GB GPU — an arrangement the zoo considers a feature.
-- **Hours:** IST. Response latency scales with examinations. The keeper carries GitHub's
-  *Quickdraw* badge; something was closed within five minutes of being opened.
-  The zoo declines to say what.
-- **Escaped specimens** (bugs) may be reported as issues on the relevant enclosure.
-  They will be mounted, classified, and added to the collection.
-- **Enclosure S-008 is intentionally empty.** It is reserved for the first production
-  incident nobody has caught yet. If you are holding one, the zoo accepts donations.
-
-<details>
-<summary><sub>EMPLOYEES ONLY — plain-text résumé for humans in a hurry</sub></summary>
+ 2025-02   ./first-steps        coursework era (Ap, ap-exp5)
+ 2025-07   git clone netflix    a rite of passage (netflix-clone)
+ 2025-12   make instruments     first tools (commitsense, qa-portfolio)
+ 2026-07   system expansion     yojanasetu · autoinvoice · ghostcoder · causal · devrel
+ 2026-08   verification era     raglens · orchestrator · one enchanted object
+```
 
 <br>
 
-**Anuj Singh** — B.E. Computer Science, graduating 2026.
+<p align="center">
+  <img src="assets/telemetry.svg" alt="live telemetry: repository count, last signal, uptime — regenerated daily by ci" width="700">
+</p>
 
-Builds evaluation and verification tooling for AI systems, and the systems too.
-Shipped, open-source, and installable today:
+<sub>the panel above is not decoration. a github action rebuilds it daily from the live api — disbelieve it, then read [.github/workflows/telemetry.yml](https://github.com/anujsingh-cse/anujsingh-cse/blob/main/.github/workflows/telemetry.yml).</sub>
 
-- **raglens** — RAG diagnostics: counterfactual chunk attribution, conflict detection,
-  failure-mode classification; NVIDIA NIM-native judge.
-- **orchestrator-of-three-cycles** — research harness measuring whether adversarial
-  multi-agent debate produces more robust code patches; 124 tests; SQLite audit log.
-- **GhostCoder** — local-first AI pair programmer with self-validation, replayable
-  decisions, and safety guardrails; on PyPI.
-- **causal-inference-toolkit** — DoWhy/EconML wrapper with sensitivity analysis,
-  quasi-experiments, uplift modeling, CLI + Streamlit UI; on PyPI, full docs site.
-- **devrel-agent** — autonomous GitHub contributor app: triage → fix → tests → PR →
-  CI remediation; multi-provider inference cascade; deployed.
+---
 
-Stack, plainly: Python and TypeScript; LLM evaluation, multi-agent orchestration,
-causal inference, OCR pipelines, local-model ops (Ollama, 4 GB VRAM tuning),
-Next.js, FastAPI, Stripe.
+```text
+guest@skeptic-os:~$ ls -la /processes
+```
 
-Graduates 2026. Accepting interesting problems.
+| PID | PROCESS | STATE | FUNCTION |
+|---|---|---|---|
+| 001 | [`raglens`](https://github.com/anujsingh-cse/raglens) | ACTIVE | finds the exact chunk that caused the rag answer |
+| 002 | [`orchestrator-of-three-cycles`](https://github.com/anujsingh-cse/orchestrator-of-three-cycles) | ACTIVE | measures whether adversarial agent debate beats solo patching |
+| 003 | [`GhostCoder`](https://github.com/anujsingh-cse/GhostCoder) | LOCAL | the coding assistant that cross-examines itself |
+| 004 | [`causal-inference-toolkit`](https://github.com/anujsingh-cse/causal-inference-toolkit) | STABLE | makes charts prove causality before speaking |
+| 005 | [`devrel-agent`](https://github.com/anujsingh-cse/devrel-agent) | DEPLOYED | autonomous contributor: writes the fix, audits it, babysits ci |
+| 006 | [`YojanaSetu`](https://github.com/anujsingh-cse/YojanaSetu) | SERVICE | vernacular ai matching citizens to 1,000+ indian govt schemes |
+| 007 | [`autoinvoice-ocr`](https://github.com/anujsingh-cse/autoinvoice-ocr) | SERVICE | invoice pdf → structured json → stripe |
+| 008 | [`nexus-analytics`](https://github.com/anujsingh-cse/nexus-analytics) | SERVICE | real-time event telemetry, sub-second |
+| 009 | [`AgentParliament`](https://github.com/anujsingh-cse/AgentParliament) | CHAMBER | decisions settled by a vote of simulated personas |
+| ??? | [`tom-riddle-s-diary`](#forbidden) | CONTAINED | see /forbidden. do not let it learn your name. |
+
+---
+
+### console
+
+<details>
+<summary><code>guest@skeptic-os:~$ prove raglens</code></summary>
+
+```text
+CLAIM     a rag pipeline can be graded at the level of individual chunks.
+
+EVIDENCE
+  attribution(C) = faithfulness(all chunks) − faithfulness(all − {C})
+  observed: removing one chunk moved faithfulness 0.42 → 0.89.
+  judge: a real llm on nvidia nim. no mocks, no scripted fixtures.
+  taxonomy shipped: retrieval_miss · chunk_dominance · generation_ignore.
+
+INSTALL   pip install raglens
+SOURCE    github.com/anujsingh-cse/raglens
+VERDICT   claim survives cross-examination.
+```
+
+</details>
+
+<details>
+<summary><code>guest@skeptic-os:~$ run orchestrator --adversarial</code></summary>
+
+```text
+QUESTION   do agents that argue merge stronger patches than agents that don't?
+
+METHOD
+  coder proposes → adversary attacks → critic rules → human signs off.
+  control group: one agent, no debate. every session logged to sqlite, replayable.
+  budget: ₹0 — free nvidia nim tier; ollama drops in.
+
+SIDE EFFECT
+  every broken patch is archived with full provenance.
+  the codebase calls this collection a "failure zoo". the name stuck.
+
+ARTIFACT   124 tests · real bugs from real repositories
+SOURCE     github.com/anujsingh-cse/orchestrator-of-three-cycles
+STATUS     an experiment, not a product. it reports data, not opinions.
+```
+
+</details>
+
+<details>
+<summary><code>guest@skeptic-os:~$ audit ghostcoder</code></summary>
+
+```text
+SUBJECT    a coding assistant that does not trust itself.
+
+FINDINGS
+  no sidebar, no chat — specialist agents whisper inline hints instead.
+  a skeptic agent re-reads every suggestion before it reaches you.
+  guardrails: rm -rf and DROP DATABASE never make it to the user.
+  `ghostcoder replay` reconstructs any session, step by step.
+  hardware floor: gtx 1650, 4 gb vram — the same machine this profile runs on.
+
+INSTALL    pip install ghostcoder
+SOURCE     github.com/anujsingh-cse/GhostCoder
+RESULT     scepticism, packaged: pip-installable.
+```
+
+</details>
+
+<details>
+<summary><code>guest@skeptic-os:~$ refute correlation</code></summary>
+
+```text
+CHARGE     charts keep claiming causation.
+
+DEFENCE
+  identify → estimate → refute → sensitivity, all config-driven.
+  rosenbaum bounds · e-values · cinelli-hazlett · synthetic control ·
+  difference-in-differences · uplift modelling.
+  cli + streamlit console + one-command executive html reports.
+
+INSTALL    pip install causal-toolkit
+DOCS       anujsingh-cse.github.io/causal-inference-toolkit
+RULING     correlation remains innocent until proven structural.
+```
+
+</details>
+
+<details>
+<summary><code>guest@skeptic-os:~$ trace devrel-agent</code></summary>
+
+```text
+TRACE      issue.opened → intent classified → multi-file fix drafted
+           → matching tests authored → diff self-audited
+           → atomic pr opened → ci watched → failures auto-remediated.
+
+CASCADE    gemini → nvidia nim → github models.
+           a dead api never leaves the desk unmanned.
+
+LIVE       devrel-agent-two.vercel.app
+SOURCE     github.com/anujsingh-cse/devrel-agent
+NOTE       the desk audits its own diffs. habit picked up from the eval floor.
+```
+
+</details>
+
+---
+
+## /forbidden
+
+<sub>containment wing. the skeptic patrols here daily.</sub>
+
+```text
+guest@skeptic-os:~$ ls /forbidden
+
+SPECIMEN-0    tom-riddle-s-diary     class: enchanted    status: live
+READING ROOM  meetily · holehe · watermarks-remover · orca · unsloth
+              (checked out, studied, returned with notes. not exhibits.)
+```
+
+<details>
+<summary><code>guest@skeptic-os:~$ open /forbidden/SPECIMEN-0</code></summary>
+
+```text
+CONTAINMENT ENTRY — a diary that talks back
+
+  remembers   what you write        (postgres + chromadb)
+  responds    as if it was always listening   (llama-3.3-70b, nvidia nim)
+  promises    secrets "that disappear", verbatim, on its landing page
+  deployed    against advice — yes, it is live
+
+an engineer of verification built the one machine you must not trust.
+this is considered a feature of the collection. handle accordingly.
+
+  → source   github.com/anujsingh-cse/Tom-riddle-s-diary
+  → live     tom-riddle-s-diary-sage.vercel.app
+```
+
+</details>
+
+---
+
+```text
+guest@skeptic-os:~$ tail -n 5 /var/log/skeptic
+```
+
+```text
+[ok]   "pip install" lines checked against each project's own readme.
+[ok]   telemetry panel is generated by ci from the live api — never typed by hand.
+[ok]   repo count, last signal, uptime: computed at build time, see workflow file.
+[warn] claim "class of 2026" is time-bounded. re-verification due july 2026.
+[warn] the enchanted object remains enchanted. flagged weekly. no fix planned.
+```
+
+<details>
+<summary><code>guest@skeptic-os:~$ sudo trust me</code></summary>
+
+```text
+sudo: trust must be computed, not granted.
+this incident has been logged — twice. the skeptic duplicates everything.
+```
+
+</details>
+
+<details>
+<summary><code>guest@skeptic-os:~$ refute anuj</code></summary>
+
+```text
+grounds for doubt, offered without prompting:
+
+  · zero stars across the fleet at build time — adoption: unproven
+  · several experiments are young; replication is invited
+  · response latency scales with examination season
+
+refutation declined. the subject agreed with you first.
+```
+
+</details>
+
+<details>
+<summary><code>guest@skeptic-os:~$ make resume --fast</code></summary>
+
+<br>
+
+**Anuj Singh** — B.E. Computer Science, class of 2026, India.
+
+Builds evaluation and verification tooling for AI systems, and the systems themselves.
+Installable today:
+
+- **raglens** — chunk-level RAG diagnostics: counterfactual attribution, conflict detection, failure taxonomy; NVIDIA NIM-native judge. `pip install raglens`
+- **orchestrator-of-three-cycles** — research harness: does adversarial multi-agent debate beat solo patching? 124 tests, replayable audit log.
+- **GhostCoder** — local-first AI pair programmer with self-validation, session replay, safety guardrails. `pip install ghostcoder`
+- **causal-inference-toolkit** — DoWhy/EconML wrapper: refutation, sensitivity analysis, quasi-experiments, uplift. `pip install causal-toolkit` + docs site.
+- **devrel-agent** — autonomous GitHub contributor: triage → fix → tests → PR → CI remediation. Deployed.
+
+Stack, plainly: Python · TypeScript · LLM evaluation · multi-agent systems · causal inference · OCR pipelines · Ollama on a 4 GB GPU · Next.js · FastAPI · Stripe.
+
+Graduates 2026. Intercom: open an issue on any process.
 
 </details>
 
 <br>
 
+```text
+guest@skeptic-os:~$ exit
+
+logout. the machine stays on.
+```
+
 <p align="center">
-  <sub>Nothing on these grounds was trusted at first sight.<br>
-  That is the whole enclosure policy, printed on every ticket.</sub>
+  <sub>skeptic-os v1.0 — two images on this page; one of them is built daily by ci from live data.<br>
+  the other is a boot sequence for a computer that exists only here.</sub>
 </p>
-
-<!-- invisible ink · entry no. 3
-     there is no entry no. 4.
-     if you found this, open an issue titled "escaped specimen"
-     on any repository. the zookeeper will know what you mean. -->
-
